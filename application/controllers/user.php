@@ -18,14 +18,24 @@ class User extends Viewbase {
   /*
    用户注册UI
   */
-  public function register(){
+  public function register($type = ''){
+   if( !$type){
+
+   }elseif($type == 'google'){
     $this->load->library('googleauth');
     if(isset($_GET['code'])){
       $uinfo = $this->googleauth->uinfo();
     echo "<pre>";  var_dump($uinfo->get());exit;
     }
     echo $this->googleauth->loginUrl();exit;
-    
+   }elseif($type == 'fb'){
+    $this->load->library('fbauth');
+    if( isset($_GET['code'])){
+      $uinfo = $this->fbauth->uinfo();
+      echo "<pre>";var_dump($uinfo);exit;
+    }
+    echo $this->fbauth->loginUrl();exit;
+   } 
   }
   /*
    接收POST注册参数

@@ -1,0 +1,7 @@
+*.file.*.html.php
+*cache/*
+*.bak
+*.swp
+*.swo
+*sitemap.xml
+
